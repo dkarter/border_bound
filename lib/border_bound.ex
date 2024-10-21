@@ -14,6 +14,7 @@ defmodule BorderBound do
       Ecto.Changeset
     ],
     exports: [
+      # mass exposes everything that Inventory exposes
       {Inventory, []}
     ]
 end

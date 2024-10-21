@@ -1,5 +1,7 @@
 defmodule BorderBound.Inventory.Devices.Schemas.Device do
+  @moduledoc false
   use Ecto.Schema
+
   import Ecto.Changeset
 
   schema "devices" do
