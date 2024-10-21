@@ -5,6 +5,7 @@ defmodule BorderBound.MixProject do
     [
       aliases: aliases(),
       app: :border_bound,
+      boundary: boundary(),
       compilers: [:boundary] ++ Mix.compilers(),
       deps: deps(),
       elixir: "~> 1.14",
@@ -82,6 +83,16 @@ defmodule BorderBound.MixProject do
         "tailwind border_bound --minify",
         "esbuild border_bound --minify",
         "phx.digest"
+      ]
+    ]
+  end
+
+  defp boundary do
+    [
+      default: [
+        check: [
+          apps: [:phoenix, :ecto, {:mix, :runtime}]
+        ]
       ]
     ]
   end
