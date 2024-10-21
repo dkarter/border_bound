@@ -84,6 +84,12 @@ defmodule Mix.Tasks.BorderBound.Gen.Action do
 
     path = Igniter.Project.Module.proper_location(igniter, module_name)
 
+    test_path =
+      Igniter.Project.Module.proper_location(igniter, "#{module_name}Test", :test)
+
+    # construct PDQ's test file location
+    # test_path = dbg(Igniter.Project.Module.proper_location(igniter, "#{module_name}Test") <> "s")
+
     action_name = Macro.underscore(options[:name])
 
     igniter
@@ -108,12 +114,26 @@ defmodule Mix.Tasks.BorderBound.Gen.Action do
       Does things
 
       Returns `:ok` when successful
+
       Otherwise returns an error containing the changeset:
       `{:error, %Ecto.Changeset{errors: [...]}}`
       """
       @callback #{action_name}(binary(), map(), keyword()) :: return_t()
       def #{action_name}(organization_id, params, opts) do
         raise "Not implemented... yet!"
+      end
+    end
+    >)
+    |> Igniter.create_new_file(test_path, ~s<
+    defmodule #{inspect(module_name)}Test do
+      use BorderBound.DataCase, async: true
+
+      describe "#{action_name}/3" do
+        @tag :pending
+        test "returns :ok on success"
+
+        @tag :pending
+        test "returns {:error, Ecto.Changeset} on failure"
       end
     end
     >)
