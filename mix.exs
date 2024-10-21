@@ -5,6 +5,7 @@ defmodule BorderBound.MixProject do
     [
       aliases: aliases(),
       app: :border_bound,
+      compilers: [:boundary] ++ Mix.compilers(),
       deps: deps(),
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
