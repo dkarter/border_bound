@@ -19,3 +19,13 @@ tasks:
 
       - cmd: mix compile
         silent: true
+
+  lint:
+    desc: Runs the linter (credo)
+    cmds:
+      - cmd: mix credo --strict
+        silent: true
+
+      # if successful 🦄
+      - cmd: unicornleap
+        silent: true
