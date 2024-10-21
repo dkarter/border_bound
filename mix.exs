@@ -41,7 +41,7 @@ defmodule BorderBound.MixProject do
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:finch, "~> 0.13"},
       {:floki, ">= 0.30.0", only: :test},
-      {:gettext, "~> 0.20"},
+      {:gettext, "~> 0.25"},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.1.1",
