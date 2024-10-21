@@ -6,4 +6,12 @@ defmodule BorderBound do
   Contexts are also responsible for managing your data, regardless
   if it comes from the database, an external API or others.
   """
+
+  use Boundary,
+    deps: [
+      Ecto,
+      # TODO: is this needed?
+      Ecto.Changeset
+    ],
+    exports: []
 end
