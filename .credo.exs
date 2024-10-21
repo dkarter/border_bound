@@ -158,7 +158,26 @@
           {Credo.Check.Warning.UnusedRegexOperation, []},
           {Credo.Check.Warning.UnusedStringOperation, []},
           {Credo.Check.Warning.UnusedTupleOperation, []},
-          {Credo.Check.Warning.WrongTestFileExtension, []}
+          {Credo.Check.Warning.WrongTestFileExtension, []},
+
+          #
+          ## From credo_naming
+          #
+          {CredoNaming.Check.Consistency.ModuleFilename,
+           excluded_paths: [
+             "test/support",
+             "priv",
+             "rel",
+             "mix.exs",
+             # phoenix has some unconventional conventions of not matching the
+             # module name
+             "lib/border_bound_web/components",
+             "lib/border_bound_web/controllers",
+             "test/border_bound_web",
+             # we want to ignore igniter tasks because they are named weird
+             # maybe want to get granular later
+             "lib/mix/tasks"
+           ]}
         ],
         disabled: [
           #
