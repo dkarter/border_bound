@@ -1,4 +1,4 @@
-defmodule BorderBound.Inventory.Device do
+defmodule BorderBound.Inventory.Devices.Schemas.Device do
   use Ecto.Schema
   import Ecto.Changeset
 
