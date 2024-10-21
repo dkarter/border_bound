@@ -17,7 +17,7 @@ defmodule BorderBoundWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import BorderBoundWeb.Gettext
+  use Gettext, backend: BorderBoundWeb.Gettext
 
   @doc """
   Renders a modal.

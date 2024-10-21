@@ -43,7 +43,7 @@ defmodule BorderBoundWeb do
         layouts: [html: BorderBoundWeb.Layouts]
 
       import Plug.Conn
-      import BorderBoundWeb.Gettext
+      use Gettext, backend: BorderBoundWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -85,7 +85,7 @@ defmodule BorderBoundWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import BorderBoundWeb.CoreComponents
-      import BorderBoundWeb.Gettext
+      use Gettext, backend: BorderBoundWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
