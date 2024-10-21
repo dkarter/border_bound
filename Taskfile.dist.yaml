@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+tasks:
+  boundary:check:
+    desc: Checks for boundary violations and returns an error if failed
+    cmds:
+      - cmd: mix clean
+        silent: true
+
+      - cmd: mix compile --warnings-as-errors
+        silent: true
+
+  boundary:warnings:
+    desc: Checks for boundary violations and just shows the warnings
+    cmds:
+      - cmd: mix clean
+        silent: true
+
+      - cmd: mix compile
+        silent: true
