@@ -3,13 +3,13 @@ defmodule BorderBound.MixProject do
 
   def project do
     [
+      aliases: aliases(),
       app: :border_bound,
-      version: "0.1.0",
+      deps: deps(),
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      aliases: aliases(),
-      deps: deps()
+      version: "0.1.0"
     ]
   end
 
