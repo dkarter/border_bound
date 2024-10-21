@@ -1,5 +1,5 @@
 defmodule BorderBoundWeb.ErrorJSONTest do
-  use BorderBoundWeb.ConnCase, async: true
+  use TestKit.ConnCase, async: true
 
   test "renders 404" do
     assert BorderBoundWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}

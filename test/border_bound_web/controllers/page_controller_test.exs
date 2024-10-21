@@ -1,5 +1,5 @@
 defmodule BorderBoundWeb.PageControllerTest do
-  use BorderBoundWeb.ConnCase
+  use TestKit.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

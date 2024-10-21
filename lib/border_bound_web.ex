@@ -33,10 +33,11 @@ defmodule BorderBoundWeb do
     quote do
       use Phoenix.Router, helpers: false
 
-      # Import common connection and controller functions to use in pipelines
-      import Plug.Conn
       import Phoenix.Controller
       import Phoenix.LiveView.Router
+
+      # Import common connection and controller functions to use in pipelines
+      import Plug.Conn
     end
   end
 
@@ -52,8 +53,9 @@ defmodule BorderBoundWeb do
         formats: [:html, :json],
         layouts: [html: BorderBoundWeb.Layouts]
 
-      import Plug.Conn
       use Gettext, backend: BorderBoundWeb.Gettext
+
+      import Plug.Conn
 
       unquote(verified_routes())
     end
@@ -91,11 +93,11 @@ defmodule BorderBoundWeb do
 
   defp html_helpers do
     quote do
+      use Gettext, backend: BorderBoundWeb.Gettext
+      import BorderBoundWeb.CoreComponents
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import BorderBoundWeb.CoreComponents
-      use Gettext, backend: BorderBoundWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

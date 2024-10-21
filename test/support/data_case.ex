@@ -1,4 +1,4 @@
-defmodule BorderBound.DataCase do
+defmodule TestKit.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,25 +10,27 @@ defmodule BorderBound.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use BorderBound.DataCase, async: true`, although
+  by setting `use TestKit.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
-      alias BorderBound.Repo
-
+      import TestKit.DataCase
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import BorderBound.DataCase
+
+      alias BorderBound.Repo
     end
   end
 
   setup tags do
-    BorderBound.DataCase.setup_sandbox(tags)
+    TestKit.DataCase.setup_sandbox(tags)
     :ok
   end
 
@@ -36,8 +38,8 @@ defmodule BorderBound.DataCase do
   Sets up the sandbox based on the test tags.
   """
   def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(BorderBound.Repo, shared: not tags[:async])
-    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+    pid = Sandbox.start_owner!(BorderBound.Repo, shared: not tags[:async])
+    on_exit(fn -> Sandbox.stop_owner(pid) end)
   end
 
   @doc """

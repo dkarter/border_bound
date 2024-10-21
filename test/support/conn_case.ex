@@ -1,4 +1,4 @@
-defmodule BorderBoundWeb.ConnCase do
+defmodule TestKit.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule BorderBoundWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use BorderBoundWeb.ConnCase, async: true`, although
+  by setting `use TestKit.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -19,20 +19,19 @@ defmodule BorderBoundWeb.ConnCase do
 
   using do
     quote do
+      use BorderBoundWeb, :verified_routes
+      import TestKit.ConnCase
+      import Phoenix.ConnTest
+      import Plug.Conn
       # The default endpoint for testing
       @endpoint BorderBoundWeb.Endpoint
 
-      use BorderBoundWeb, :verified_routes
-
       # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
-      import BorderBoundWeb.ConnCase
     end
   end
 
   setup tags do
-    BorderBound.DataCase.setup_sandbox(tags)
+    TestKit.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

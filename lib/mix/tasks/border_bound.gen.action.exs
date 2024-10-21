@@ -127,7 +127,7 @@ defmodule Mix.Tasks.BorderBound.Gen.Action do
     >)
     |> Igniter.create_new_file(test_path, ~s<
     defmodule #{inspect(module_name)}Test do
-      use BorderBound.DataCase, async: true
+      use TestKit.DataCase, async: true
 
       describe "#{action_name}/3" do
         @tag :pending
