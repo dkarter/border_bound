@@ -15,6 +15,7 @@ defmodule Mix.Tasks.BorderBound.Gen.Action do
 
   * `--name` or `-n` - name for the action
   * `--context` or `-c` - context to put the action under
+  * `--subcontext` or `-s` - (optional) the sub-context to put the action under
   """
 
   use Igniter.Mix.Task
