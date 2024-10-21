@@ -49,6 +49,7 @@ defmodule BorderBound.MixProject do
        app: false,
        compile: false,
        depth: 1},
+      {:igniter, "~> 0.3"},
       {:jason, "~> 1.2"},
       {:phoenix, "~> 1.7.14"},
       {:phoenix_ecto, "~> 4.5"},
