@@ -13,5 +13,7 @@ defmodule BorderBound do
       # TODO: is this needed?
       Ecto.Changeset
     ],
-    exports: []
+    exports: [
+      {Inventory, []}
+    ]
 end
